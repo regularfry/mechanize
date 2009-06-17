@@ -149,6 +149,7 @@ module WWW
       def from_native_charset(str, enc=nil)
         if page
           enc ||= page.encoding
+          raise ArgumentError.new("Form encoding cannot be nil!") if enc.nil?
           Util.from_native_charset(str,enc)
         else
           str

@@ -37,6 +37,7 @@ module WWW
         def from_native_charset(s, code)
           if Mechanize.html_parser == Nokogiri::HTML
             return unless s
+            raise ArgumentError.new("Encoding cannot be nil!") if code.nil?
             Iconv.iconv(code, "UTF-8", s).join("")
           else
             return s
